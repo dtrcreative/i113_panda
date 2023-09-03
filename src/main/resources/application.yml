@@ -1,0 +1,16 @@
+server:
+  port: 28086
+spring:
+  application:
+    name: i113_panda
+  profiles:
+    active: dev
+  messages:
+    always-use-message-format: false
+    basename: messages/messages
+    encoding: UTF-8
+    fallback-to-system-locale: true
+
+springdoc:
+  api-docs:
+    path: /panda-docs
