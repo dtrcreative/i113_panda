@@ -1,0 +1,16 @@
+#Logging
+logging:
+  level:
+    root: info
+  file:
+    name: logs/serv.log
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+  instance:
+    status-page-url-path: actuator/info
+    health-check-url-path: actuator/health
+    instance-id: "${spring.application.name}:${random.uuid}"

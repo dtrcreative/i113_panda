@@ -1,8 +1,9 @@
 server:
   port: 28086
+
 spring:
   application:
-    name: i113_panda
+    name: api-panda-service
   profiles:
     active: dev
   messages:
@@ -11,6 +12,20 @@ spring:
     encoding: UTF-8
     fallback-to-system-locale: true
 
+#Open-api
 springdoc:
   api-docs:
     path: /panda-docs
+
+#Prometheus
+management:
+  endpoint:
+    info:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus,loggers
+  metrics:
+    enable:
+      jvm: true
