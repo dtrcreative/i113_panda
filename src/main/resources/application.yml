@@ -1,11 +1,13 @@
-server:
-  port: 28086
-
 spring:
   application:
     name: api-panda-service
   profiles:
     active: dev
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:28080/realms/i113_realm
   messages:
     always-use-message-format: false
     basename: messages/messages
@@ -15,7 +17,7 @@ spring:
 #Open-api
 springdoc:
   api-docs:
-    path: /panda-docs
+    path: /events-docs
 
 #Prometheus
 management:
