@@ -28,6 +28,6 @@ public class AccountDto{
 
     private Type type;
 
-    private MailEntity mail;
+    private String mail;
 
 }

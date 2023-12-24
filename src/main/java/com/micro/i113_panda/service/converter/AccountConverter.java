@@ -2,6 +2,7 @@ package com.micro.i113_panda.service.converter;
 
 import com.micro.i113_panda.model.dto.AccountDto;
 import com.micro.i113_panda.model.entity.AccountEntity;
+import com.micro.i113_panda.service.MailService;
 import com.micro.i113_panda.service.UserService;
 import com.micro.i113_panda.service.utils.PasswordGenerator;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 public class AccountConverter {
 
     private UserService userService;
+    private MailService mailService;
     private PasswordGenerator passwordGenerator;
 
     public List<AccountDto> convertEntitiesToDto(List<AccountEntity> entitiesList) {
@@ -38,7 +40,7 @@ public class AccountConverter {
                 .password(inputEntity.getPassword())
                 .link(inputEntity.getLink())
                 .description(inputEntity.getDescription())
-                .mail(inputEntity.getMail())
+                .mail(inputEntity.getMail().getMail())
                 .type(inputEntity.getType())
                 .build();
     }
@@ -51,7 +53,7 @@ public class AccountConverter {
                 .password(inputDto.getPassword())
                 .link(inputDto.getLink())
                 .description(inputDto.getDescription())
-                .mail(inputDto.getMail())
+                .mail(mailService.findOrCreateMail(inputDto.getMail()))
                 .type(inputDto.getType())
                 .build();
     }
