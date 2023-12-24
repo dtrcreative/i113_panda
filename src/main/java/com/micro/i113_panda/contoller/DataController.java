@@ -13,7 +13,7 @@ public class DataController {
     private DataService dataService;
 
     @GetMapping("/")
-    public DataDto getTypes() {
+    public DataDto collectData() {
         return dataService.collectData();
     }
 }

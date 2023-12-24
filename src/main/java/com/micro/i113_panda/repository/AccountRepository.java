@@ -10,8 +10,6 @@ public interface AccountRepository extends JpaRepository<AccountEntity, Integer>
 
     List<AccountEntity> findAll();
 
-    List<AccountEntity> findAllByNotifyIsTrue();
-
     List<AccountEntity> findAllByUserEntity(UserEntity userEntity);
 
     void deleteAllByUserEntity(UserEntity userEntity);
