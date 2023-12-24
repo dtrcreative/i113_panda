@@ -1,6 +1,9 @@
 server:
   port: 8086
 
+password-generator:
+  pattern: Aaaaaaaaaa00000
+
 #Logging
 logging:
   level:

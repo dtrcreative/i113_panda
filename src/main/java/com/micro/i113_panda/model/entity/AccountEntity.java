@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table(name = "accounts")
-public class AccountEntity {
+public class AccountEntity implements Comparable<AccountEntity> {
 
     @Id
     @Column(name = "id")
@@ -35,5 +35,18 @@ public class AccountEntity {
     @ManyToOne
     @JoinColumn(name = "mail")
     private MailEntity mail;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
+
+    @Override
+    public int compareTo(AccountEntity o) {
+        if (password.equals(o.getPassword())) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
 }
