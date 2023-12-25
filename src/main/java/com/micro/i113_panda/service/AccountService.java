@@ -50,9 +50,10 @@ public class AccountService {
         return counter;
     }
 
-    public void replaceAllbyList(List<AccountDto> inputDtoList){
+    public int replaceAllByListAndCount(List<AccountDto> inputDtoList){
         deleteAllUserRelated(inputDtoList.get(0).getUserId());
         repository.saveAllAndFlush(converter.convertDtoToEntities(inputDtoList));
+        return inputDtoList.size();
     }
 
     public AccountDto update(AccountDto inputDto){

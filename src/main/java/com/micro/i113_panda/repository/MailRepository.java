@@ -8,7 +8,5 @@ import java.util.Optional;
 
 public interface MailRepository extends JpaRepository<MailEntity, Integer> {
 
-    List<MailEntity> findAll();
-
     Optional<MailEntity> findMailEntityByMail(String mail);
 }

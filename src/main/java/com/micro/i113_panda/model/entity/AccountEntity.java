@@ -20,6 +20,7 @@ public class AccountEntity implements Comparable<AccountEntity> {
     @NonNull
     private String name;
 
+    @NonNull
     private String account;
 
     @NonNull

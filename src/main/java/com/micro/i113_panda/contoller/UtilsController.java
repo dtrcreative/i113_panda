@@ -27,7 +27,7 @@ public class UtilsController {
     }
 
     @PostMapping("/upload-replace")
-    public void uploadWithReplaceJson(@RequestBody List<AccountDto> unitsDtoList) {
-        accountService.replaceAllbyList(unitsDtoList);
+    public int uploadWithReplaceJson(@RequestBody List<AccountDto> unitsDtoList) {
+        return accountService.replaceAllByListAndCount(unitsDtoList);
     }
 }
