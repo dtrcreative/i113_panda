@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/api/panda/")
 public class PandaController {
 
-    private AccountService accountService;
+    private final AccountService accountService;
 
     public PandaController(AccountService service) {
         this.accountService = service;

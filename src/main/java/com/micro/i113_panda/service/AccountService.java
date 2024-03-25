@@ -22,7 +22,7 @@ public class AccountService {
     private AccountConverter converter;
     private UserService userService;
 
-    public List<AccountDto> selectAll(String userId){
+    public List<AccountDto> selectAll(String userId) {
         UserEntity userEntity = userService.findOrCreateUser(userId);
         List<AccountEntity> entitiesList = repository.findAllByUserEntity(userEntity);
         if (entitiesList.size() > 0) {
@@ -31,18 +31,18 @@ public class AccountService {
         return new ArrayList<>();
     }
 
-    public AccountDto create(AccountDto accountDto){
+    public AccountDto create(AccountDto accountDto) {
         AccountEntity entity = repository.save(converter.convertDtoToEntity(accountDto));
         return converter.convertEntityToDto(entity);
     }
 
-    public int createByListAndCountSuccessful(List<AccountDto> inputDtoList){
+    public int createByListAndCountSuccessful(List<AccountDto> inputDtoList) {
         UserEntity userEntity = userService.findOrCreateUser(inputDtoList.get(0).getUserId());
         List<AccountEntity> baseEntities = repository.findAllByUserEntity(userEntity);
         List<AccountEntity> inputList = converter.convertDtoToEntities(inputDtoList);
         int counter = 0;
         for (AccountEntity inputEntity : inputList) {
-            if(!isExist(baseEntities, inputEntity)){
+            if (!isExist(baseEntities, inputEntity)) {
                 repository.save(inputEntity);
                 counter++;
             }
@@ -50,13 +50,13 @@ public class AccountService {
         return counter;
     }
 
-    public int replaceAllByListAndCount(List<AccountDto> inputDtoList){
+    public int replaceAllByListAndCount(List<AccountDto> inputDtoList) {
         deleteAllUserRelated(inputDtoList.get(0).getUserId());
         repository.saveAllAndFlush(converter.convertDtoToEntities(inputDtoList));
         return inputDtoList.size();
     }
 
-    public AccountDto update(AccountDto inputDto){
+    public AccountDto update(AccountDto inputDto) {
         Optional<AccountEntity> entity = repository.findById(inputDto.getId());
         if (entity.isPresent()) {
             AccountEntity updatedEntity = converter.convertDtoToEntity(inputDto);
@@ -67,7 +67,7 @@ public class AccountService {
         throw new PandaException("Update error", HttpStatus.BAD_REQUEST);
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         Optional<AccountEntity> entity = repository.findById(id);
         entity.ifPresent(foundedEntity -> repository.delete(foundedEntity));
     }
@@ -76,7 +76,7 @@ public class AccountService {
         repository.deleteAllById(selected);
     }
 
-    public void deleteAllUserRelated(String username){
+    public void deleteAllUserRelated(String username) {
         UserEntity user = userService.findOrCreateUser(username);
         List<AccountEntity> entityList = repository.findAllByUserEntity(user);
         if (entityList.size() > 0) {
@@ -84,9 +84,9 @@ public class AccountService {
         }
     }
 
-    private boolean isExist(List<AccountEntity> inputAccountsList, AccountEntity inputAccountEntity){
-        for(AccountEntity entity: inputAccountsList){
-            if(entity.compareTo(inputAccountEntity) == 0){
+    private boolean isExist(List<AccountEntity> inputAccountsList, AccountEntity inputAccountEntity) {
+        for (AccountEntity entity : inputAccountsList) {
+            if (entity.compareTo(inputAccountEntity) == 0) {
                 return true;
             }
         }
