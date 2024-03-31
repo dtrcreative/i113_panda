@@ -1,6 +1,6 @@
 spring:
   application:
-    name: api-panda-service
+    name: panda
   profiles:
 #    active: dev
     active: prod

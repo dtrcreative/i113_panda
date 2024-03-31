@@ -13,6 +13,8 @@ logging:
     name: logs/serv.log
 
 spring:
+  application:
+    name: api-panda-service
   datasource:
     url: jdbc:postgresql://${server.ip}:5432/postgres?currentSchema=panda
     username: postgres
