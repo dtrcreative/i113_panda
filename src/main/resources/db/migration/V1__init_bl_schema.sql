@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS accounts
     user_id     INTEGER      not null,
     name        VARCHAR(90) NOT NULL,
     account     VARCHAR(50),
-    password    VARCHAR(30) NOT NULL UNIQUE,
+    password    VARCHAR(30) NOT NULL,
     link        text,
     description text,
     mail        integer     NOT NULL,
