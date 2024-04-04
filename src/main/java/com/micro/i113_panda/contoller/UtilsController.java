@@ -16,9 +16,9 @@ public class UtilsController {
     private UtilsService utilService;
     private AccountService accountService;
 
-    @GetMapping("/passgen")
-    public String generatePassword() {
-        return utilService.generatePassword();
+    @PostMapping("/passgen")
+    public String generatePassword(@RequestBody AccountDto unitDto) {
+        return utilService.generatePassword(unitDto.getUserId());
     }
 
     @PostMapping("/upload-add")

@@ -43,7 +43,7 @@ public class AccountEntity implements Comparable<AccountEntity> {
 
     @Override
     public int compareTo(AccountEntity o) {
-        if (password.equals(o.getPassword())) {
+        if (id.equals(o.id) && name.equals(o.name) && password.equals(o.getPassword())) {
             return 0;
         } else {
             return 1;
