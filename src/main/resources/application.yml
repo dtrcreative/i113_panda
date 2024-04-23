@@ -2,8 +2,8 @@ spring:
   application:
     name: panda
   profiles:
-#    active: dev
-    active: prod
+    active: dev
+#    active: prod
 
   messages:
     always-use-message-format: false
