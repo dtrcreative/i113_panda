@@ -1,6 +1,10 @@
+app:
+  delimiter: '=========================='
+  version: '@project.version@'
+
 spring:
   application:
-    name: panda
+    name: api-panda-service
   profiles:
 #    active: dev
     active: prod
